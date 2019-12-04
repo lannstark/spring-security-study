@@ -19,14 +19,14 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AccountService implements UserDetailsService {
 
-	private AccountRepository accountRepository;
+	private final AccountRepository accountRepository;
 
 	@Override
 	public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
 		Account account = accountRepository.findByName(name);
 		return User.builder()
 				.username(account.getName())
-				.password("{noop} 1234")
+				.password(account.getPassword())
 				.roles("USER")
 				.build();
 	}
