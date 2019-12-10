@@ -35,7 +35,6 @@ public class LoginUserArgumentResolver implements HandlerMethodArgumentResolver 
 	@Override
 	public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
 								  NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
-		// TODO: 2019-12-10 이렇게 저장하면 유저 한명에 대한 세션만 유지하는게 아닌가? 아 DB 쓰면 달라지려나?
 		return httpSession.getAttribute("user");
 	}
 
